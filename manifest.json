@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+	"name": "Auto Recipes",
+	"version": "1.0.0",
+	"description": "An automatic recipe extractor",
+	"icons": {
+		"128": "./res/default_icon128.png",
+		"48": "./res/default_icon48.png",
+		"16": "./res/default_icon16.png"
+	},
+	"permissions": [
+		"storage",
+		"activeTab",
+		"tabs"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"https://*/*",
+				"http://*/*"
+			],
+			"js": [
+				"jquery-3.3.1.min.js",
+				"quantities.js",
+				"constants.js",
+				"StorageManager.js",
+				"RecipeManager.js",
+				"preload.js"
+			],
+			"run_at": "document_start"
+		}
+	],
+	"background" : {
+		"scripts" : [
+			"backgroundConstants.js",
+			"background.js"
+		]
+	},
+	"browser_action": {
+		"default_icon": "./res/unactive_icon128.png"
+	}
+}
